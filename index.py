@@ -1,6 +1,8 @@
-from config import *
+import config
 from pathlib import Path
-import json, os, shutil
+import json
+import os
+import shutil
 
 # Чтение JSON-файлов
 def load_json(filepath):
@@ -67,7 +69,7 @@ def merge_and_process_json(file1_path, file2_path, output_path, source_folder, d
 
     # Находим новые сообщения
     new_messages = [msg for msg in messages1 if msg["id"] not in ids_in_file2]
-    array_id = [msg["id"] for msg in new_messages]  # Запоминаем добавленные ID
+    [msg["id"] for msg in new_messages]  # Запоминаем добавленные ID
 
     # Копируем файлы для новых сообщений с переименованием при необходимости
     process_files_with_rename(new_messages, source_folder, dest_folder)
@@ -81,4 +83,4 @@ def merge_and_process_json(file1_path, file2_path, output_path, source_folder, d
     print(f"Файл обновлен. Добавлено {len(new_messages)} сообщений. Сохранено в {output_path}")
 
 # Выполнение
-merge_and_process_json(f"{PATH_TD_EXPORTS}/result.json", f"{PATH_LATEST_TD_EXPORT}/result.json", "output.json", PATH_TD_EXPORTS, PATH_LATEST_TD_EXPORT)
+merge_and_process_json(f"{config.PATH_TD_EXPORTS}/result.json", f"{config.PATH_LATEST_TD_EXPORT}/result.json", "output.json", config.PATH_TD_EXPORTS, config.PATH_LATEST_TD_EXPORT)
