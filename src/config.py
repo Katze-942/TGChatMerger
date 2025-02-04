@@ -1,19 +1,16 @@
 from datetime import datetime
-from enum import Enum
+from classes.BetterEnum import BetterEnum
 
-
-class LogLevel(Enum):
+class LogLevel(BetterEnum):
     ERROR_AND_WARN = 1
     INFO = 2
     DEBUG = 3
 
-
-class CompressionType(Enum):
+class CompressionType(BetterEnum):
     ZIP_STORED = "ZIP_STORED"
     ZIP_DEFLATED = "ZIP_DEFLATED"
     ZIP_BZIP2 = "ZIP_BZIP2"
     ZIP_LZMA = "ZIP_LZMA"
-
 
 ### === Основные параметры === ###
 PARSING_JSON = True
@@ -49,12 +46,12 @@ CONSOLE_COLOR = True
 
 ### === Резервное копирование === ###
 BACKUP_FOLDER_PATH = f"{PATH_LATEST_TD_EXPORT}/Backup"
-"""Путь, в котором будет сделана резервная копия HTML и JSON файлов"""
+"""Путь, в котором будет сделана резервная копия HTML и JSON файлов. Не забудьте создать папку"""
 
-BACKUP_HTML_FILES = True
+BACKUP_HTML_FILES = False
 """Включить резервную копия HTML файлов"""
 
-BACKUP_JSON_FILE = True
+BACKUP_JSON_FILE = False
 """Включить резервную копия JSON файла"""
 
 BACKUP_REFLINK_USE = True
